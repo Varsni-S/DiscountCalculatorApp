@@ -1,11 +1,11 @@
 import {View, Text} from 'react-native';
 import React from 'react';
-import Calc from './screens/Calc';
+import Calculator from './src/screens/Calculator';
 
 export default function App() {
   return (
     <View>
-      <Calc />
+      <Calculator />
     </View>
   );
 }

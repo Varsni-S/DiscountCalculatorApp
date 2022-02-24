@@ -1,9 +1,9 @@
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
-import Header from './Header';
+import Header from '../screens/Header';
 import {TextInput, Button} from 'react-native-paper';
 
-export default function Calc() {
+export default function Calculator() {
   const [priceamt, setPriceAmt] = useState('');
   const [discountamt, setDiscountAmt] = useState('');
   const [finalamt, setFinalAmt] = useState('');
