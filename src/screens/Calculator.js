@@ -2,74 +2,93 @@ import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import Header from '../screens/Header';
 import {TextInput, Button} from 'react-native-paper';
+import {useForm, Controller} from 'react-hook-form';
 
 export default function Calculator() {
-  const [priceamt, setPriceAmt] = useState('');
-  const [discountamt, setDiscountAmt] = useState('');
+  const {
+    handleSubmit,
+    control,
+    reset,
+    formState: {errors},
+  } = useForm({
+    defaultValues: {
+      priceamt: '',
+      discountamt: '',
+    },
+  });
+
   const [finalamt, setFinalAmt] = useState('');
   const [savedamt, setSavedAmt] = useState('');
-  const [error, setError] = useState({});
 
-  const submit = () => {
-    if (!priceamt && !discountamt) {
-      setError({
-        msg: 'Please Enter the Amount',
-      });
-    } else if (!priceamt) {
-      setError({
-        msg: 'Please Enter Price Amount',
-      });
-    } else if (!discountamt) {
-      setError({
-        msg: 'Please Enter Discount Amount',
-      });
-    } else {
-      setFinalAmt(priceamt - (priceamt * discountamt) / 100);
-      setSavedAmt(priceamt - (priceamt - (priceamt * discountamt) / 100));
-    }
+  const onSubmit = data => {
+    let price = parseInt(data.priceamt);
+    let discount = parseInt(data.discountamt);
+    setFinalAmt(price - (price * discount) / 100);
+    setSavedAmt(price - (price - (price * discount) / 100));
   };
 
-  const reset = () => {
-    setPriceAmt('');
-    setDiscountAmt('');
-    setFinalAmt('');
-    setSavedAmt('');
-  };
+  // const reset = () => {
+  //   setFinalAmt('');
+  //   setSavedAmt('');
+  // };
 
   return (
     <View>
       <Header name="Discount Calculator " />
 
       <View style={{padding: 20, marginTop: 15}}>
-        <TextInput
-          label="Price Amount"
-          theme={{colors: {primary: '#ff751a'}}}
-          keyboardType="number-pad"
-          style={styles.input}
-          onChangeText={e => setPriceAmt(e)}
-          onChange={() => setError({})}
-          value={priceamt}
-        />
+        <Controller
+          control={control}
+          rules={{required: true}}
+          render={({field: {onChange, onBlur, value}}) => (
+            <TextInput
+              label="Price Amount"
+              theme={{colors: {primary: '#ff751a'}}}
+              keyboardType="number-pad"
+              style={styles.input}
+              onBlur={onBlur}
+              onChangeText={value => onChange(value)}
+              value={value}
+            />
+          )}
+          name="priceamt"
 
-        <TextInput
-          label="Discount Amount"
-          theme={{colors: {primary: '#ff751a'}}}
-          keyboardType="numeric"
-          style={styles.input}
-          onChangeText={e => setDiscountAmt(e)}
-          onChange={() => setError({})}
-          value={discountamt}
+          // defaultValue=""
         />
+        {errors.priceamt && (
+          <Text style={styles.error}>Price Amount is required.</Text>
+        )}
+        <Controller
+          control={control}
+          rules={{required: true}}
+          render={({field: {onChange, onBlur, value}}) => (
+            <TextInput
+              label="Discount Amount"
+              theme={{colors: {primary: '#ff751a'}}}
+              keyboardType="numeric"
+              style={styles.input}
+              onBlur={onBlur}
+              onChangeText={value => onChange(value)}
+              value={value}
+            />
+          )}
+          name="discountamt"
+
+          // defaultValue=""
+        />
+        {errors.discountamt && (
+          <Text style={styles.error}>Discount Amount is required.</Text>
+        )}
       </View>
 
-      <Text style={styles.error}>{error ? error.msg : ''}</Text>
+      {/* <Text style={styles.error}>{error ? error.msg : ''}</Text> */}
 
       <TouchableOpacity>
         <Button
           mode="contained"
           theme={{colors: {primary: '#cc2900'}}}
           style={styles.calcbtn}
-          onPress={() => submit()}>
+          onPress={handleSubmit(onSubmit)}>
           <Text style={{color: 'white'}}>Calculate</Text>
         </Button>
       </TouchableOpacity>
@@ -95,7 +114,14 @@ export default function Calculator() {
           mode="contained"
           theme={{colors: {primary: '#cc2900'}}}
           style={styles.calcbtn}
-          onPress={() => reset()}>
+          onPress={() => {
+            reset({
+              priceamt: '',
+              discountamt: '',
+              setFinalAmt: '',
+              setSavedAmt: '',
+            });
+          }}>
           <Text style={{color: 'white'}}>Reset</Text>
         </Button>
       </TouchableOpacity>
@@ -114,8 +140,8 @@ const styles = StyleSheet.create({
     marginLeft: 120,
   },
   error: {
-    fontSize: 18,
+    fontSize: 15,
     color: 'red',
-    marginLeft: 90,
+    marginLeft: 40,
   },
 });
