@@ -1,7 +1,7 @@
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {TextInput, Button} from 'react-native-paper';
 import React from 'react';
-import Header from './Header';
+import Header from '../components/Header';
 import {useForm, Controller} from 'react-hook-form';
 
 export default function HookForm() {
