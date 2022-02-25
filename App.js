@@ -10,8 +10,8 @@ export default function App() {
     <View>
       {/* <Calculator /> */}
       {/* <HookForm/> */}
-      {/* <Translation /> */}
-      <Login />
+      <Translation />
+      {/* <Login /> */}
     </View>
   );
 }

@@ -7,7 +7,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React from 'react';
-import Header from './Header';
+import Header from '../components/Header';
+//import Header from './Header';
 
 export default function Login() {
   return (

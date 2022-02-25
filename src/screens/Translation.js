@@ -1,6 +1,6 @@
 import {View, Text, StyleSheet, Button} from 'react-native';
 import React from 'react';
-import Header from '../screens/Header';
+import Header from '../components/Header';
 import LottieView from 'lottie-react-native';
 import '../initI18next';
 import {useTranslation} from 'react-i18next';
