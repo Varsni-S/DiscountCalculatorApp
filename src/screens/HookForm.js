@@ -60,7 +60,7 @@ export default function HookForm() {
         )}
 
         {errors.password?.type === 'minLength' && (
-          <Text>Minimum 8 characters are required</Text>
+          <Text>Minimum 8 characters are required for password</Text>
         )}
         <TouchableOpacity>
           <Button
