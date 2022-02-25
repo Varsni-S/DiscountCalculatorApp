@@ -14,7 +14,7 @@ export default function Translation() {
       <Header name="Translation" />
 
       <LottieView
-        source={require('../../assests/97039-oh-no.json')}
+        source={require('../assests/97039-oh-no.json')}
         style={styles.animation}
         speed={3}
         autoPlay
