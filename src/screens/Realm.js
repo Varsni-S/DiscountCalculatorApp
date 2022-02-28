@@ -1,145 +1,3 @@
-// import React, {useState} from 'react';
-// import {
-//   SafeAreaView,
-//   Text,
-//   StatusBar,
-//   FlatList,
-//   View,
-//   TouchableOpacity,
-// } from 'react-native';
-// import realm, {
-//   getAllProducts,
-//   addProduct,
-//   deleteAllProducts,
-//   updateAllProductQuantity,
-//   getBigProducts,
-//   getAllUsers,
-//   addUser,
-//   getUserById,
-//   deleteAllUsers,
-// } from '../Database';
-
-// const Realm = () => {
-//   // Set initial states
-//   const [products, setProduct] = useState(getAllProducts());
-//   const [user, setUser] = useState(getAllUsers());
-
-//   // Render
-//   return (
-//     <>
-//       <StatusBar barStyle="light-content" />
-//       <SafeAreaView style={{padding: 16}}>
-//         {/* Our buttons for products */}
-//         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-//           <Text
-//             style={{paddingTop: 8}}
-//             onPress={() => {
-//               // Create a product with random amount of pages and user by id 0.
-//               addProduct(
-//                 'Watch',
-//                 Math.floor(Math.random() * 500),
-//                 null,
-//                 getUserById(0)[0],
-//               );
-//               setProduct(getAllProducts());
-//             }}>
-//             Add Product
-//           </Text>
-
-//           <Text
-//             style={{paddingTop: 8}}
-//             onPress={() => {
-//               updateAllProductQuantity();
-//               setProduct(getAllProducts());
-//             }}>
-//             Update quantity
-//           </Text>
-
-//           <Text
-//             style={{paddingTop: 8}}
-//             onPress={() => {
-//               deleteAllProducts();
-//               setProduct(getAllProducts());
-//             }}>
-//             Delete all Products
-//           </Text>
-//         </View>
-
-//         {/* List for all products */}
-//         <Text style={{marginTop: 8, fontWeight: 'bold'}}>products</Text>
-//         <FlatList
-//           data={products}
-//           keyExtractor={(item, index) => index.toString()}
-//           renderItem={({item, index}) => {
-//             return (
-//               <View
-//                 style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-//                 <Text>{item.productName}</Text>
-//                 <Text>{item.price}</Text>
-//                 <Text>{item.quantity === null ? 'null' : item.quantity}</Text>
-//                 <Text>
-//                   {item.user === null
-//                     ? 'null'
-//                     : item.user.firstName + ' ' + item.user.lastName}
-//                 </Text>
-//               </View>
-//             );
-//           }}
-//         />
-
-//         {/* Divider */}
-//         <View
-//           style={{
-//             width: '100%',
-//             backgroundColor: '#000000',
-//             height: 1,
-//             marginVertical: 8,
-//           }}
-//         />
-
-//         {/* Our buttons for user */}
-//         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-//           <Text
-//             style={{paddingTop: 8}}
-//             onPress={() => {
-//               addUser('FirstN', 'LastN');
-//               setProduct(getAllProducts());
-//             }}>
-//             Add user
-//           </Text>
-
-//           <Text
-//             style={{paddingTop: 8}}
-//             onPress={() => {
-//               deleteAllUsers();
-//               setProduct(getAllProducts());
-//             }}>
-//             Delete all user
-//           </Text>
-//         </View>
-
-//         {/* List for all user */}
-//         <Text style={{marginTop: 8, fontWeight: 'bold'}}>user</Text>
-//         <FlatList
-//           data={user}
-//           keyExtractor={(item, index) => index.toString()}
-//           renderItem={({item, index}) => {
-//             return (
-//               <View
-//                 style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-//                 <Text>{item.id}</Text>
-//                 <Text>{item.firstName + ' ' + item.lastName}</Text>
-//               </View>
-//             );
-//           }}
-//         />
-//       </SafeAreaView>
-//     </>
-//   );
-// };
-
-// export default Realm;
-
 import React, {useState} from 'react';
 import {
   SafeAreaView,
@@ -282,3 +140,145 @@ const Realm = () => {
 };
 
 export default Realm;
+
+// import React, {useState} from 'react';
+// import {
+//   SafeAreaView,
+//   Text,
+//   StatusBar,
+//   FlatList,
+//   View,
+//   TouchableOpacity,
+// } from 'react-native';
+// import realm, {
+//   getAllProducts,
+//   addProduct,
+//   deleteAllProducts,
+//   updateAllProductQuantity,
+//   getBigProducts,
+//   getAllUsers,
+//   addUser,
+//   getUserById,
+//   deleteAllUsers,
+// } from '../Database';
+
+// const Realm = () => {
+//   // Set initial states
+//   const [products, setProduct] = useState(getAllProducts());
+//   const [user, setUser] = useState(getAllUsers());
+
+//   // Render
+//   return (
+//     <>
+//       <StatusBar barStyle="light-content" />
+//       <SafeAreaView style={{padding: 16}}>
+//         {/* Our buttons for products */}
+//         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+//           <Text
+//             style={{paddingTop: 8}}
+//             onPress={() => {
+//               // Create a product with random amount of pages and user by id 0.
+//               addProduct(
+//                 'Watch',
+//                 Math.floor(Math.random() * 500),
+//                 null,
+//                 getUserById(0)[0],
+//               );
+//               setProduct(getAllProducts());
+//             }}>
+//             Add Product
+//           </Text>
+
+//           <Text
+//             style={{paddingTop: 8}}
+//             onPress={() => {
+//               updateAllProductQuantity();
+//               setProduct(getAllProducts());
+//             }}>
+//             Update quantity
+//           </Text>
+
+//           <Text
+//             style={{paddingTop: 8}}
+//             onPress={() => {
+//               deleteAllProducts();
+//               setProduct(getAllProducts());
+//             }}>
+//             Delete all Products
+//           </Text>
+//         </View>
+
+//         {/* List for all products */}
+//         <Text style={{marginTop: 8, fontWeight: 'bold'}}>products</Text>
+//         <FlatList
+//           data={products}
+//           keyExtractor={(item, index) => index.toString()}
+//           renderItem={({item, index}) => {
+//             return (
+//               <View
+//                 style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+//                 <Text>{item.productName}</Text>
+//                 <Text>{item.price}</Text>
+//                 <Text>{item.quantity === null ? 'null' : item.quantity}</Text>
+//                 <Text>
+//                   {item.user === null
+//                     ? 'null'
+//                     : item.user.firstName + ' ' + item.user.lastName}
+//                 </Text>
+//               </View>
+//             );
+//           }}
+//         />
+
+//         {/* Divider */}
+//         <View
+//           style={{
+//             width: '100%',
+//             backgroundColor: '#000000',
+//             height: 1,
+//             marginVertical: 8,
+//           }}
+//         />
+
+//         {/* Our buttons for user */}
+//         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+//           <Text
+//             style={{paddingTop: 8}}
+//             onPress={() => {
+//               addUser('FirstN', 'LastN');
+//               setProduct(getAllProducts());
+//             }}>
+//             Add user
+//           </Text>
+
+//           <Text
+//             style={{paddingTop: 8}}
+//             onPress={() => {
+//               deleteAllUsers();
+//               setProduct(getAllProducts());
+//             }}>
+//             Delete all user
+//           </Text>
+//         </View>
+
+//         {/* List for all user */}
+//         <Text style={{marginTop: 8, fontWeight: 'bold'}}>user</Text>
+//         <FlatList
+//           data={user}
+//           keyExtractor={(item, index) => index.toString()}
+//           renderItem={({item, index}) => {
+//             return (
+//               <View
+//                 style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+//                 <Text>{item.id}</Text>
+//                 <Text>{item.firstName + ' ' + item.lastName}</Text>
+//               </View>
+//             );
+//           }}
+//         />
+//       </SafeAreaView>
+//     </>
+//   );
+// };
+
+// export default Realm;
